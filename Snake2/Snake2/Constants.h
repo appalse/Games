@@ -28,5 +28,8 @@ const int Width = CellSize * W;
 // Color of cell
 const std::string CellTexturePath = "images/sand.png";
 
+const std::string EatTexturePath = "images/eat.png";
+const std::string WastedTexturePath = "images/wasted.png";
+
 // Timeout in milliseconds
 const int TIMEOUT = 100;

@@ -13,18 +13,16 @@ public:
 	Snake();
 	~Snake() {}
 
-	// Move snake by 1 step in specified direction. 
-	void MakeStep();
-	
-	// Direction of snake movement
-	Direction GetCurrentDirection() const { return direction; }
-	void SetCurrentDirection(const Direction& newDirection) { direction = newDirection; }
-	// Length of snake
-	int GetLength() const { return length; }
-	// Coordinates of snake part (position is from 0 to snake's length)
+	void MakeStep(); // Move snake by 1 step in specified direction. 
+	bool HasEaten(int x, int y) const;
+	void Lengthen() { ++length; }
+	bool HasIntersection() const;
+	bool LengthTooLong() const;
+
+	void SetSnakeDirection(const Direction& newDirection) { direction = newDirection; }
+	int GetSnakeLength() const { return length; }
 	int GetX(int position) const { return coords[position].x; }
 	int GetY(int position) const { return coords[position].y; }
-	// Path for picture of snake
 	std::string GetSnakeTexturePath() const { return snakeTexturePath; }
 
 	// do not copy or move Snake
@@ -33,7 +31,6 @@ public:
 	Snake& operator= (Snake&& other) = delete;
 
 private:
-	// Color of Snake
 	const std::string snakeTexturePath = "images/snake2.png";
 	int length;
 	Direction direction;

@@ -40,3 +40,20 @@ void Snake::goBack(int& coord, const int& maxCoordLength) {
 		coord = maxCoordLength + coord;
 	}
 }
+
+bool Snake::HasEaten(int x, int y) const {
+	if (coords[0].x == x && coords[0].y == y) return true;
+	return false;
+}
+
+bool Snake::HasIntersection() const {
+	for (int i = 1; i < length; ++i) {
+		if (coords[0].x == coords[i].x && coords[0].y == coords[i].y) return true;
+	}
+	return false;
+}
+
+bool Snake::LengthTooLong() const {
+	if (length > SNAKE_LENGTH_MAX) return true;
+	return false;
+}
