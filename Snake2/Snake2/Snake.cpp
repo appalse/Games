@@ -1,5 +1,6 @@
 #include "Snake.h"
 
+
 Snake::Snake() :
 	length(SNAKE_LENGTH_MIN),
 	direction(Direction::DOWN)
@@ -10,7 +11,7 @@ Snake::Snake() :
 	}
 }
 
-void Snake::MakeStep() {
+void Snake::MakeStep(int cellsCountByX, int cellsCountByY) {
 	// Move all snake parts except the snake's head (coords[0])
 	for (int i = length - 1; i > 0; --i) {
 		coords[i].x = coords[i - 1].x;
@@ -18,16 +19,16 @@ void Snake::MakeStep() {
 	}
 	// Move snake's head (coords[0])
 	if (direction == Direction::LEFT) {
-		goBack(coords[0].x, W);
+		goBack(coords[0].x, cellsCountByX);
 	}
 	if (direction == Direction::RIGHT) {
-		goAhead(coords[0].x, W);
+		goAhead(coords[0].x, cellsCountByX);
 	}
 	if (direction == Direction::DOWN) {
-		goAhead(coords[0].y, H);
+		goAhead(coords[0].y, cellsCountByY);
 	}
 	if (direction == Direction::UP) {
-		goBack(coords[0].y, H);
+		goBack(coords[0].y, cellsCountByY);
 	}
 }
 
